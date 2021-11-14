@@ -13,6 +13,7 @@ Los siguientes son los componente  que utilizaran los Robots.
 - 2x H-Bridge L2398
 - 3x Motores (GHM-03)
 - 3x Llantas Omnidireccionales
+- 4x Sensor Tcrt5000
 
 # Creditos.
 
