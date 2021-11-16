@@ -45,7 +45,6 @@ void setup(){
 void loop(){
     DELANTERO = ProcesarInfo(BTSerial);
     INFRAROJOS = DentroCampo(4,5,6,7);
-    // Prioridad 1. Mantenerse en el Campo.
     if(INFRAROJOS != 0){
         switch (INFRAROJOS){
             case 2:
@@ -90,7 +89,6 @@ void loop(){
             break;
         }
     } else {
-        // Prioridad 2.
         switch (DELANTERO) {
             case 0:
                 MOTORES::Defensa();

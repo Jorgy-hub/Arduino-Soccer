@@ -5,7 +5,6 @@ int DentroCampo(int IR_1, int IR_2, int IR_3, int IR_4){
     int L = digitalRead(IR_2);
     int B = digitalRead(IR_3);
     int F = digitalRead(IR_4);
-    int T = R+L+B+F;
 
     if(T > 0){
         if(T > 1){

@@ -1,4 +1,4 @@
-#include "Motors.h"
+#include "Motores.h"
 
 MOTORES::MOTORES(Motor A[3]){
     for(int i = 0; i < 3; i++)
@@ -46,17 +46,20 @@ void MOTORES::Movimientos(char *Direccion){
 }
 
 void MOTORES::Delantero(float X, float Y, float Center, float Close){
-    // Derecha.
-    if(X > Center){
+    if(X > Center)
         MOTORES::Movimientos("DERECHA");
-    // Izquierda.
-    }else if(X < Center){
+    else if(X < Center)
         MOTORES::Movimientos("IZQUIERDA");
-    // Centrada.
-    }else if(X == Center){
-        // Acercar.
-        if(Y < Close){
+    else if(X == Center)
+        if(Y < Close)
             MOTORES::Movimientos("ADELANTE");
-        }
-    }
 }
+
+void MOTORES::Defensa(float X, float Center, float Center_X){
+    if(X != Center){
+        if(X > Center)
+            MOTORES::Movimientos("DERECHA");
+        else if(X < Center)
+            MOTORES::Movimientos("IZQUIERDA");
+    }
+}   
