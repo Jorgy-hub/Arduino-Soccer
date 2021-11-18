@@ -38,6 +38,20 @@ class MOTORES {
          * @param Direccion 
          */
         void Movimientos(char *Direccion);
+        /**
+         * @brief Jugada de Delantero.
+         * @param X 
+         * @param Y 
+         * @param Center 
+         * @param Close 
+         */
+        void Delantero(float X, float Y, float Center, float Close);
+        /**
+         * @brief Jugada de Defensa.
+         * @param X 
+         * @param Center 
+         */
+        void Defensa(float X, float Center);
 };
 
 #endif

@@ -1,7 +1,9 @@
+#include <HTInfraredSeeker.h>
 #include "Brujula.h"
 #include "Motores.h"
 #include "Infrarojo.h"
 
+// S E E K E R
 float SEEKER_PATEAR = 150.00;             
 float SEEKER_CENTRO = 125.00;
 
@@ -17,20 +19,19 @@ void setup(){
     Serial.begin(9600);
     BTSerial.begin(9600); 
     // Iniciar Librerias.
+    Initialize(4,4,15,9);
     BRUJULA::Initialize();
-    MAIN::Initialize(4,4,15,9);
     MOTORES::Initialize(Motores);
     InfraredSeeker::Initialize();     
 }
 
-// Metodo: Sistema de Prioridades.
-// 1. No salir del Campo.
-// 2. Modo de Juego mediante Bluetooth.
-// 3. Orientarse: Aprender del Campo.
-// 4. Realizar Jugada: Delantero o Defensa.
 void loop(){
-    int DELANTERO = ProcesarInfo(BTSerial);
-    int INFRAROJOS = DentroCampo(4,5,6,7);
+    int INFRAROJOS = DentroCampo({4,5,6,7});
+    int DELANTERO  = 0;
+
+    InfraredResult InfraredBall = InfraredSeeker::ReadAC();
+    float X = InfraredResult.Direction;
+    float Y = InfraredResult.Strength;
 
     if(INFRAROJOS != 0){
         switch (INFRAROJOS){
@@ -77,17 +78,17 @@ void loop(){
         }
     } else {
         switch (DELANTERO) {
-            case 0:
-                MOTORES::Defensa();
+            case 0:    
+                MOTORES::Defensa(X, SEEKER_CENTRO);    
             break;
             case 1:
-                MOTORES::Delantero();
+                MOTORES::Delantero(X, Y, SEEKER_CENTRO, SEEKER_PATEAR);
             break;
         }
     }
 }
 
-void MAIN::Initialize(int inputs, int inputs_s, int outputs, int outputs_s){
+void Initialize(int inputs, int inputs_s, int outputs, int outputs_s){
     for(int i = inputs; i < inputs+inputs_s; i++){
         pinMode(i, INPUT);
     }

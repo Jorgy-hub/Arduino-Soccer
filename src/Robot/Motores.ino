@@ -45,7 +45,6 @@ void MOTORES::Movimientos(char *Direccion){
     }
 }
 
-/*
 void MOTORES::Delantero(float X, float Y, float Center, float Close){
     if(X > Center)
         MOTORES::Movimientos("DERECHA");
@@ -56,11 +55,11 @@ void MOTORES::Delantero(float X, float Y, float Center, float Close){
             MOTORES::Movimientos("ADELANTE");
 }
 
-void MOTORES::Defensa(float X, float Center, float Center_X){
+void MOTORES::Defensa(float X, float Center){
     if(X != Center){
         if(X > Center)
             MOTORES::Movimientos("DERECHA");
         else if(X < Center)
             MOTORES::Movimientos("IZQUIERDA");
     }
-}*/ 
+}
