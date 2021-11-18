@@ -2,6 +2,7 @@
 #include "Brujula.h"
 #include "Motores.h"
 #include "Infrarojo.h"
+#include <Bluetooth.h>
 
 // S E E K E R
 float SEEKER_PATEAR = 150.00;             
@@ -13,13 +14,10 @@ Motor MOTOR_DERECHO   = Motor{18,19,20};
 Motor MOTOR_IZQUIERDO = Motor{21,22,23};
 Motor Motores[3] = {MOTOR_ATRAS, MOTOR_DERECHO, MOTOR_IZQUIERDO};
 
-AltSoftSerial BTSerial; 
-
 void setup(){
     Serial.begin(9600);
-    BTSerial.begin(9600); 
-    // Iniciar Librerias.
     Initialize(4,4,15,9);
+    BLTOOTH::Initialize();
     BRUJULA::Initialize();
     MOTORES::Initialize(Motores);
     InfraredSeeker::Initialize();     

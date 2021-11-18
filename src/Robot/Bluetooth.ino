@@ -1,5 +1,9 @@
 #include <Bluetooth.h>
 
-bool ProcesarInfo(AltSoftSerial BTSerial){
+void BLTOOTH::Initialize(){
+    BTSerial.begin(9600); 
+}
+
+bool BLTOOTH::ChecarDelantero(AltSoftSerial BTSerial){
     return true
 }
