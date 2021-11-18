@@ -36,14 +36,12 @@ class MOTORES {
 
         /**
          * @brief Movimientos Basicos del Robot.
-         * 
          * @param Direccion 
          */
         void Movimientos(char *Direccion);
 
         /**
         * @brief Funcion para mover el robot hacia los diferentes lados.
-        * 
         * @param X 
         * @param Y 
         * @param Center 
