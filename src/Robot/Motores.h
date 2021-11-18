@@ -13,10 +13,10 @@ class MOTORES {
     Motor Motores[3];
     public:
         /**
-         * @brief Construct a new MOTORES object
-         * 
+         * @brief Iniciar Motores establecidos.
+         * @param A 
          */
-        MOTORES(A[3]);
+        void Initialize(Motor A[3]);
         /**
         * @brief Funcion para girar el robot hacia un angulo especifico.
         * 
@@ -33,24 +33,11 @@ class MOTORES {
         * @param speed   Velocidad del enable del Puente H.
         */
         void MoverMotor(Motor motor, int state_p, int state_n, int speed);
-
         /**
          * @brief Movimientos Basicos del Robot.
          * @param Direccion 
          */
         void Movimientos(char *Direccion);
-
-        /**
-        * @brief Funcion para mover el robot hacia los diferentes lados.
-        * @param X 
-        * @param Y 
-        * @param Center 
-        * @param CenterTolerance 
-        * @param Close 
-        * @param CloseTolerance 
-        * @param motor 
-        */
-        void Delantero(float X, float Y, float Center, float Close);
 };
 
 #endif

@@ -1,9 +1,11 @@
 #include <Brujula.h>
 
-int16_t mx, my, mz;
-float DECLINACION_MAGNETICA = 0.12;
+void BRUJULA::Initialize(){
+    Brujula.initialize();
+    Angulo_Inicial = Angulo(Brujula);
+}
 
-float Angulo(HMC5883L Brujula){
+float BRUJULA::Angulo(){
     Brujula.getHeading(&mx, &my, &mz);
     float RES = atan2(my, mx);
     RES = RES * (180.0/3.141592653589793238463);

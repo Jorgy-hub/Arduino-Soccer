@@ -2,39 +2,25 @@
 #include "Motores.h"
 #include "Infrarojo.h"
 
-// Seeker.
 float SEEKER_PATEAR = 150.00;             
 float SEEKER_CENTRO = 125.00;
 
-// Declarar Motores.
+// M O T O R E S
 Motor MOTOR_ATRAS     = Motor{15,16,17};
 Motor MOTOR_DERECHO   = Motor{18,19,20};
 Motor MOTOR_IZQUIERDO = Motor{21,22,23};
 Motor Motores[3] = {MOTOR_ATRAS, MOTOR_DERECHO, MOTOR_IZQUIERDO};
 
-// Configuraciones. (NO MOVER)
 AltSoftSerial BTSerial; 
-HMC5883L Brujula;
-float BRUJULA_CENTER = 0;
-int DELANTERO  = 0;
-int INFRAROJOS = 0;
 
 void setup(){
-    // Iniciar Serial del Robot.
     Serial.begin(9600);
-    // Iniciar Transmision Bluetooth.
     BTSerial.begin(9600); 
-    // Inciar Brujula.
-    Brujula.initialize();
-    // Iniciar Conecciones.
-    Main::Initialize(4,4,15,9);
-    // Iniciar Motores.
-    MOTORES::MOTORES(Motores);
-    // Iniciar Seeker.
-    InfraredSeeker::Initialize();   
-
-    // Valores Iniciales.
-    BRUJULA_CENTER = Angulo(Brujula);
+    // Iniciar Librerias.
+    BRUJULA::Initialize();
+    MAIN::Initialize(4,4,15,9);
+    MOTORES::Initialize(Motores);
+    InfraredSeeker::Initialize();     
 }
 
 // Metodo: Sistema de Prioridades.
@@ -43,8 +29,9 @@ void setup(){
 // 3. Orientarse: Aprender del Campo.
 // 4. Realizar Jugada: Delantero o Defensa.
 void loop(){
-    DELANTERO = ProcesarInfo(BTSerial);
-    INFRAROJOS = DentroCampo(4,5,6,7);
+    int DELANTERO = ProcesarInfo(BTSerial);
+    int INFRAROJOS = DentroCampo(4,5,6,7);
+
     if(INFRAROJOS != 0){
         switch (INFRAROJOS){
             case 2:
@@ -100,7 +87,7 @@ void loop(){
     }
 }
 
-void Main::Initialize(int inputs, int inputs_s, int outputs, int outputs_s){
+void MAIN::Initialize(int inputs, int inputs_s, int outputs, int outputs_s){
     for(int i = inputs; i < inputs+inputs_s; i++){
         pinMode(i, INPUT);
     }

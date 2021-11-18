@@ -1,11 +1,11 @@
 #include "Motores.h"
 
-MOTORES::MOTORES(Motor A[3]){
+void MOTORES::Initialize(Motor A[3]){
     for(int i = 0; i < 3; i++)
         Motores[i] = A[i];
 }
 
-void MOTORES::Mover_Motor(Motor motor, int state_p, int state_n, int speed){
+void MOTORES::MoverMotor(Motor motor, int state_p, int state_n, int speed){
     digitalWrite(motor.ena, speed);
     digitalWrite(motor.vcc, state_p);
     digitalWrite(motor.gnd, state_n); 
@@ -45,6 +45,7 @@ void MOTORES::Movimientos(char *Direccion){
     }
 }
 
+/*
 void MOTORES::Delantero(float X, float Y, float Center, float Close){
     if(X > Center)
         MOTORES::Movimientos("DERECHA");
@@ -62,4 +63,4 @@ void MOTORES::Defensa(float X, float Center, float Center_X){
         else if(X < Center)
             MOTORES::Movimientos("IZQUIERDA");
     }
-}   
+}*/ 
