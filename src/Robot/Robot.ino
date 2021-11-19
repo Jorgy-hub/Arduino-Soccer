@@ -24,12 +24,12 @@ void setup(){
 }
 
 void loop(){
-    int INFRAROJOS = DentroCampo({4,5,6,7});
-    int DELANTERO  = 0;
-
     InfraredResult InfraredBall = InfraredSeeker::ReadAC();
     float X = InfraredResult.Direction;
     float Y = InfraredResult.Strength;
+
+    int INFRAROJOS = DentroCampo({4,5,6,7});
+    int DELANTERO  = BLTOOTH::ChecarDelantero(X, Y);
 
     if(INFRAROJOS != 0){
         switch (INFRAROJOS){
