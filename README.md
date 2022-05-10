@@ -23,7 +23,8 @@ Los siguientes son los componente  que utilizaran los Robots.
 
 ---
 <div align=center>
+  <img src="https://forthebadge.com/images/badges/built-with-love.svg" />
   <img src="https://forthebadge.com/images/badges/made-with-c-plus-plus.svg" />
   <img src="https://forthebadge.com/images/badges/powered-by-qt.svg" />
-  <img src="https://forthebadge.com/images/badges/works-on-my-machine.svg">
+  <img src="https://forthebadge.com/images/badges/works-on-my-machine.svg" />
 </div>
